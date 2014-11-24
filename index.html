@@ -1,0 +1,46 @@
+<DOCTYPE html>
+<html>
+<head>
+	<title>Battleship</title>
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+</head>
+<body>
+<div class="board">
+	<div class="gridTop">
+		<p class="side">Player 1</p>
+		<div class="gridB box hidden"></div>
+		<div class="gridA box shown"></div>
+		<div class="ships box">	
+			<p class="side">Ship Selector</p>
+			<ul>
+				<li><img class="ship carrier p1" src="img/5.gif"></li>
+				<li><img class="ship battleship p1" src="img/4.gif"></li>
+				<li><img class="ship submarine p1" src="img/3.gif"></li>
+				<li><img class="ship cruiser p1" src="img/3.gif"></li>
+				<li><img class="ship destroyer p1" src="img/2.gif"></li>
+			</ul>
+			<button type="button" name="readyButton">Ready for Battle!</button>
+		</div>
+	</div>
+<!-- 	<div class="gridBottom">
+		<p class="side">Player 2</p>
+		<div class="gridA box hidden"></div>
+		<div class="gridB box shown"></div>
+		<div class="ships box">
+			<p class="side">Ship Selector</p>
+			<ul>
+				<li><img class="ship carrier p2" src="img/5.gif"></li>
+				<li><img class="ship battleship p2" src="img/4.gif"></li>
+				<li><img class="ship submarine p2" src="img/3.gif"></li>
+				<li><img class="ship cruiser p2" src="img/3.gif"></li>
+				<li><img class="ship destroyer p2" src="img/2.gif"></li>
+			</ul>
+			<button type="button" name="readyButton">Ready for Battle!</button>
+		</div>
+	</div> -->
+</div>
+	<script src="bower_components/jquery/dist/jquery.js"></script>
+	<script src="bower_components/jquery-ui/jquery-ui.js"></script>
+	<script src="js/main.js"></script>
+</body>
+</html>
