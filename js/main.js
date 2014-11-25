@@ -14,11 +14,11 @@ $(function() {
   }
 
 	$( 'img.ship' ).draggable({
-		snap: 'div.shown',
+		snap: '.shown span.cell',
     // grid: [10, 10],
 		containment: '.shown'});
 
-	$( 'div.shown' ).droppable({
+	$( 'cell.shown' ).droppable({
 		accept: '.ship',
 	});
 
