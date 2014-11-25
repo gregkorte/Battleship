@@ -3,10 +3,8 @@ $(function() {
   var $gridTarget = $('.gridTable');
 
   for(var i = 0; i < 10; i++) {
-    console.log("hi");
     var $row = $('<div></div>').addClass('row');
     for(var j = 0; j < 10; j++) {
-      console.log("bye");
       var $cell = $('<span></span>').addClass('cell');
       $row.append($cell); 
     }
@@ -14,13 +12,17 @@ $(function() {
   }
 
 	$( 'img.ship' ).draggable({
-		snap: 'div.shown',
-    // grid: [10, 10],
+		snap: '.shown span.cell',
 		containment: '.shown'});
 
-	$( 'div.shown' ).droppable({
+  $('span.cell').droppable({
+    accept: '.ship',
+  });
+
+/*	$( 'div.shown' ).droppable({
 		accept: '.ship',
 	});
+  */
 
 });
 
