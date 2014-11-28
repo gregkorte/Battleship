@@ -11,19 +11,27 @@ $(function() {
     $gridTarget.append($row);
   }
 
-	$( 'img.ship' ).draggable({
-		snap: '.shown span.cell',
+  // $( ".cell" ).droppable({ accept: ".ship" });
+  // var accept = $( ".cell" ).droppable( "option", "accept" );
+  // $( ".cell" ).droppable( "option", "accept", ".ship" );
+  
+  // $( ".ship" ).droppable({ accept: "" });
+  // var accept = $( ".ship" ).droppable( "option", "accept" );
+  // $( ".ship" ).droppable( "option", "accept", "" );
+
+
+	$( '.ship' ).draggable({
+		 snap: '.shown span.cell',
+    //obstacle: '.ship',
+    //preventCollision: true,
 		containment: '.shown'});
+
+  $('.ship').sortable();
+ 
 
   $('span.cell').droppable({
     accept: '.ship',
   });
-
-/*	$( 'div.shown' ).droppable({
-		accept: '.ship',
-	});
-  */
-
 });
 
 $('button').click(function(){
@@ -35,6 +43,27 @@ $('button').click(function(){
 })
 
 
+function rotate(){
+  var clickedShip = $('.ui-draggable-dragging');
+  if (clickedShip.hasClass("horizontal")) {
+    clickedShip.removeClass("horizontal");
+    clickedShip.addClass("vertical");
+  } else if (clickedShip.hasClass("vertical")) {
+    clickedShip.removeClass("vertical");
+    clickedShip.addClass("horizontal");
+  }  
+}
+
+$('.ship').mousedown(function() {
+  console.log("mousedown");
+   $('body').keydown(function(event){
+     console.log(event.keyCode);
+     if (event.keyCode == 32) {
+       event.preventDefault();
+       rotate();
+     }
+   });  
+});
 
 //Set ready state
 //Place ships
