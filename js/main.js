@@ -14,33 +14,37 @@ $(function() {
   // $( ".cell" ).droppable({ accept: ".ship" });
   // var accept = $( ".cell" ).droppable( "option", "accept" );
   // $( ".cell" ).droppable( "option", "accept", ".ship" );
-  
+
   // $( ".ship" ).droppable({ accept: "" });
   // var accept = $( ".ship" ).droppable( "option", "accept" );
   // $( ".ship" ).droppable( "option", "accept", "" );
 
 
-	$( '.ship' ).draggable({
-		 snap: '.shown span.cell',
+  $( '.ship' ).draggable({
+    snap: '.shown span.cell',
     //obstacle: '.ship',
     //preventCollision: true,
-		containment: '.shown'});
+    containment: '.shown'});
 
   $('.ship').sortable();
- 
+
 
   $('span.cell').droppable({
     accept: '.ship',
   });
+
+  $('span.cell').click(function(){
+    console.log($(this));
+  });
 });
 
 $('button').click(function(){
-	console.log('Ready for war');
+  console.log('Ready for war');
 });
 
 $('button').click(function(){
-	console.log('Board is cleared...')
-})
+  console.log('Board is cleared...')
+});
 
 
 function rotate(){
@@ -52,18 +56,24 @@ function rotate(){
     clickedShip.removeClass("vertical");
     clickedShip.addClass("horizontal");
   }  
+  clickedShip = "";
 }
 
 $('.ship').mousedown(function() {
+  console.log($(this));
   console.log("mousedown");
-   $('body').keydown(function(event){
-     console.log(event.keyCode);
-     if (event.keyCode == 32) {
-       event.preventDefault();
-       rotate();
-     }
-   });  
+  $('body').keydown(function(event){
+    console.log(event.keyCode);
+    if (event.keyCode == 32) {
+      event.preventDefault();
+      rotate();
+    }
+  });  
 });
+
+
+
+
 
 //Set ready state
 //Place ships

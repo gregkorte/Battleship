@@ -16,25 +16,73 @@ ul {
   background: #0275ea;
 }
 
-.ship {
-  width: 200px;
+
+.horizontal, .ship, .vertical {
+  z-index: 10;
+}
+.horizontal.carrier {
+  background: url("../img/carrier-h.png");
   height: 40px;
-  background: green;
+  width: 200px;
 }
 
-
-.horizontal {
-  /*-webkit-transform: rotate(-90deg); */
-  width: 200px;
-  height: 40px;
-  background: green;
+.vertical.carrier {
+  background: url("../img/carrier-v.png");
+  height: 200px;
+  width: 40px;
 }
 
+.horizontal.destroyer {
+  background: url("../img/destroyer-h.png");
+  height: 40px;
+  width: 80px;
+}
+
+.vertical.destroyer {
+  background: url("../img/destroyer-v.png");
+  width: 40px;
+  height: 80px;
+}
+
+.horizontal.submarine {
+  background: url("../img/submarine-h.png");
+  height: 40px;
+  width: 120px;
+}
+
+.vertical.submarine {
+  background: url("../img/submarine-v.png");
+  width: 40px;
+  height: 120px;
+}
+
+.horizontal.cruiser {
+  background: url("../img/cruiser-h.png");
+  height: 40px;
+  width: 120px;
+}
+
+.vertical.cruiser {
+  background: url("../img/cruiser-v.png");
+  width: 40px;
+  height: 120px;
+}
+
+.horizontal.battleship {
+  background: url("../img/battleship-h.png");
+  height: 40px;
+  width: 160px;
+}
+
+.vertical.battleship {
+  background: url("../img/battleship-v.png");
+  width: 40px;
+  height: 160px;
+}
 .vertical {
   /* -webkit-transform: rotate(90deg); */
   width: 40px;
   height: 200px;
-  background: green;
 }
 
 
@@ -59,6 +107,7 @@ ul {
 
 .ships li {
   padding: 0 2px;
+  max-height: 40px;
 }
 
 .gridTop, .gridBottom {
