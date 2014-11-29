@@ -4,39 +4,53 @@ $(function() {
 
   for(var i = 0; i < 10; i++) {
     var $row = $('<div></div>').addClass('row');
+    $row.addClass(function(index){
+      index = i;
+      return index;
+    });
     for(var j = 0; j < 10; j++) {
-      var $cell = $('<span></span>').addClass('cell');
+      var $cell = $('<span></span>').addClass('cell open');
+      $cell.addClass(function(jIndex){
+        jIndex = j;
+        return "" + i + jIndex;
+      });
       $row.append($cell); 
     }
     $gridTarget.append($row);
   }
 
-  // $( ".cell" ).droppable({ accept: ".ship" });
-  // var accept = $( ".cell" ).droppable( "option", "accept" );
-  // $( ".cell" ).droppable( "option", "accept", ".ship" );
-
-  // $( ".ship" ).droppable({ accept: "" });
-  // var accept = $( ".ship" ).droppable( "option", "accept" );
-  // $( ".ship" ).droppable( "option", "accept", "" );
-
-
   $( '.ship' ).draggable({
-    snap: '.shown span.cell',
-    //obstacle: '.ship',
-    //preventCollision: true,
-    containment: '.shown'});
-
-  $('.ship').sortable();
-
-
-  $('span.cell').droppable({
-    accept: '.ship',
+    snap: '.open',
+    containment: '.shown'
   });
+  
+  var shipName;
 
-  $('span.cell').click(function(){
-    console.log($(this));
+  $('.ship').mousedown(function(){
+    shipName = $(this).context.classList[1];
+     });
+
+    $('.open').droppable({
+      tolerance: "touch",
+      accept: '.ship',
+      over: function(event, ui) {
+        if ($(this).hasClass('occupied')) {
+          //$('.ship').draggable({ revert: true });
+          //$(this).removeClass('occupied');
+        }
+      },
+      drop: function(event, ui) {
+        if ($(this).hasClass('occupied')) {
+          $(this).droppable({ revert: true});
+        } else {
+        $(this).addClass('occupied ' + shipName).removeClass('open');
+        }
+      },
+      out: function(event, ui) {
+        $(this).removeClass('occupied ' + shipName).addClass('open');
+      }
+    });
   });
-});
 
 $('button').click(function(){
   console.log('Ready for war');
@@ -60,10 +74,7 @@ function rotate(){
 }
 
 $('.ship').mousedown(function() {
-  console.log($(this));
-  console.log("mousedown");
   $('body').keydown(function(event){
-    console.log(event.keyCode);
     if (event.keyCode == 32) {
       event.preventDefault();
       rotate();
@@ -71,9 +82,31 @@ $('.ship').mousedown(function() {
   });  
 });
 
+function setShips(){
+
+  $('.ship').draggable( "disable" );
+}
 
 
 
+
+
+
+
+
+
+
+
+
+
+function checkZ() {
+  for (var i = 0; i < 10; i++) {
+
+    for (var j = 0; j < 10; j++) {
+      console.log($('0').zIndex());
+    }
+  }
+}
 
 //Set ready state
 //Place ships

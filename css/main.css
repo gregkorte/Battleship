@@ -106,7 +106,8 @@ ul {
 }
 
 .ships li {
-  padding: 0 2px;
+  margin: 0;
+  padding: 0;
   max-height: 40px;
 }
 
